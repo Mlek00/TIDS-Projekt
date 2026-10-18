@@ -8,3 +8,12 @@ ARSO - pridobi meteorološke podatke in vremenska opozorila za Slovenijo. Aplika
 OPEN-Meteo - Weather Forecast API - za pridobivanje vremenskih napovedi za izbran kraj. Omogoča bolj podroben opis vremenskih razmer, dostopen na https://open-meteo.com/en/docs  (vhod: koordinate kraja in izbrani vremenski parametri, izhod: vremenska napoved na lokaciji ob izbranem datumu).
 
 OpenStreetMap - Overpass API - ob vnosu kraja, bo poiskal geografske objekte("znamenitosti"), pridobljene z/na https://wiki.openstreetmap.org/wiki/Overpass_API , ki bodo nato predlagane uporabniku(vhod: izbran kraj, izhod: seznam zanimivosti v obliki formata json).
+
+# Opis podatkov (podatek, tip, "oblika" zapisa)
+Kraj izleta (String, ime kraja)
+Datum (Num/String, YYYY-MM-DD)
+Temperatura(Num, °C)
+Padavine(Num, mm)
+Hitrost vetra(Num, km/h)
+Vremenska opozorila (String/txt field, Odvisna od ARSO)
+Zanimivosti(Seznam, JSON/XML)
