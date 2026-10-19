@@ -1,0 +1,109 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<izleti>
+    <izlet id="I01" krajId="K01">
+        <naziv>Celjski grad</naziv>
+        <vrsta>Ogled znamenitosti</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I02" krajId="K02">
+        <naziv>Ljubljanski grad</naziv>
+        <vrsta>Ogled znamenitosti</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I03" krajId="K03">
+        <naziv>Pohorje</naziv>
+        <vrsta>Pohodništvo</vrsta>
+        <zahtevnost>Srednja</zahtevnost>
+        <trajanje>4</trajanje>
+        <oprema>Pohodni čevlji</oprema>
+    </izlet>
+    <izlet id="I04" krajId="K04">
+        <naziv>Blejsko jezero</naziv>
+        <vrsta>Sprehod</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I05" krajId="K05">
+        <naziv>Bohinjsko jezero</naziv>
+        <vrsta>Sprehod</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>3</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I06" krajId="K06">
+        <naziv>Sprehod po Kopru</naziv>
+        <vrsta>Sprehod</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I07" krajId="K07">
+        <naziv>Ptujski grad</naziv>
+        <vrsta>Ogled znamenitosti</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I08" krajId="K08">
+        <naziv>Jezero Jasna</naziv>
+        <vrsta>Sprehod</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Topla oblačila</oprema>
+    </izlet>
+    <izlet id="I09" krajId="K09">
+        <naziv>Postojnska jama</naziv>
+        <vrsta>Notranja aktivnost</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Topla oblačila</oprema>
+    </izlet>
+    <izlet id="I10" krajId="K10">
+        <naziv>Solkanski most</naziv>
+        <vrsta>Ogled znamenitosti</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>1</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I11" krajId="K11">
+        <naziv>Velenjsko jezero</naziv>
+        <vrsta>Sprehod</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I12" krajId="K12">
+        <naziv>Grad Otočec</naziv>
+        <vrsta>Ogled znamenitosti</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I13" krajId="K01">
+        <naziv>Šmartinsko jezero</naziv>
+        <vrsta>Sprehod</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+    <izlet id="I14" krajId="K02">
+        <naziv>Narodni muzej Slovenije</naziv>
+        <vrsta>Notranja aktivnost</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>2</trajanje>
+        <oprema></oprema>
+    </izlet>
+    <izlet id="I15" krajId="K03">
+        <naziv>Mariborski mestni park</naziv>
+        <vrsta>Sprehod</vrsta>
+        <zahtevnost>Lahka</zahtevnost>
+        <trajanje>1</trajanje>
+        <oprema>Udobna obutev</oprema>
+    </izlet>
+</izleti>

@@ -1,0 +1,76 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<kraji>
+    <kraj id="K01">
+        <ime>Celje</ime>
+        <regija>Savinjska</regija>
+        <latitude>46.2297</latitude>
+        <longitude>15.2601</longitude>
+    </kraj>
+    <kraj id="K02">
+        <ime>Ljubljana</ime>
+        <regija>Osrednjeslovenska</regija>
+        <latitude>46.0569</latitude>
+        <longitude>14.5058</longitude>
+    </kraj>
+    <kraj id="K03">
+        <ime>Maribor</ime>
+        <regija>Podravska</regija>
+        <latitude>46.5547</latitude>
+        <longitude>15.6459</longitude>
+    </kraj>
+    <kraj id="K04">
+        <ime>Bled</ime>
+        <regija>Gorenjska</regija>
+        <latitude>46.3683</latitude>
+        <longitude>14.1146</longitude>
+    </kraj>
+    <kraj id="K05">
+        <ime>Bohinj</ime>
+        <regija>Gorenjska</regija>
+        <latitude>46.2769</latitude>
+        <longitude>13.8885</longitude>
+    </kraj>
+    <kraj id="K06">
+        <ime>Koper</ime>
+        <regija>Obalno-kraška</regija>
+        <latitude>45.5481</latitude>
+        <longitude>13.7302</longitude>
+    </kraj>
+    <kraj id="K07">
+        <ime>Ptuj</ime>
+        <regija>Podravska</regija>
+        <latitude>46.4199</latitude>
+        <longitude>15.8697</longitude>
+    </kraj>
+    <kraj id="K08">
+        <ime>Kranjska Gora</ime>
+        <regija>Gorenjska</regija>
+        <latitude>46.4843</latitude>
+        <longitude>13.7857</longitude>
+    </kraj>
+    <kraj id="K09">
+        <ime>Postojna</ime>
+        <regija>Primorsko-notranjska</regija>
+        <latitude>45.7743</latitude>
+        <longitude>14.2153</longitude>
+    </kraj>
+    <kraj id="K10">
+        <ime>Nova Gorica</ime>
+        <regija>Goriška</regija>
+        <latitude>45.9560</latitude>
+        <longitude>13.6484</longitude>
+    </kraj>
+    <kraj id="K11">
+        <ime>Velenje</ime>
+        <regija>Savinjska</regija>
+        <latitude>46.3592</latitude>
+        <longitude>15.1103</longitude>
+    </kraj>
+    <kraj id="K12">
+        <ime>Novo mesto</ime>
+        <regija>Jugovzhodna Slovenija</regija>
+        <latitude>45.8039</latitude>
+        <longitude>15.1689</longitude>
+    </kraj>
+</kraji>

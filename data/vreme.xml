@@ -1,0 +1,124 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<vremenskeNapovedi>
+    <napoved id="V01" krajId="K01">
+        <datum>2026-10-20</datum>
+        <temperatura>17</temperatura>
+        <padavine>0</padavine>
+        <veter>8</veter>
+        <opis>Sončno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V02" krajId="K02">
+        <datum>2026-10-20</datum>
+        <temperatura>15</temperatura>
+        <padavine>5</padavine>
+        <veter>12</veter>
+        <opis>Oblačno z dežjem</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V03" krajId="K03">
+        <datum>2026-10-20</datum>
+        <temperatura>16</temperatura>
+        <padavine>1</padavine>
+        <veter>10</veter>
+        <opis>Delno oblačno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V04" krajId="K04">
+        <datum>2026-10-20</datum>
+        <temperatura>12</temperatura>
+        <padavine>8</padavine>
+        <veter>15</veter>
+        <opis>Deževno</opis>
+        <opozorilo>Močne padavine</opozorilo>
+    </napoved>
+    <napoved id="V05" krajId="K05">
+        <datum>2026-10-20</datum>
+        <temperatura>11</temperatura>
+        <padavine>12</padavine>
+        <veter>18</veter>
+        <opis>Deževno</opis>
+        <opozorilo>Močne padavine</opozorilo>
+    </napoved>
+    <napoved id="V06" krajId="K06">
+        <datum>2026-10-20</datum>
+        <temperatura>21</temperatura>
+        <padavine>0</padavine>
+        <veter>7</veter>
+        <opis>Sončno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V07" krajId="K07">
+        <datum>2026-10-20</datum>
+        <temperatura>17</temperatura>
+        <padavine>2</padavine>
+        <veter>9</veter>
+        <opis>Delno oblačno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V08" krajId="K08">
+        <datum>2026-10-20</datum>
+        <temperatura>9</temperatura>
+        <padavine>3</padavine>
+        <veter>27</veter>
+        <opis>Vetrovno</opis>
+        <opozorilo>Močan veter</opozorilo>
+    </napoved>
+    <napoved id="V09" krajId="K09">
+        <datum>2026-10-20</datum>
+        <temperatura>14</temperatura>
+        <padavine>10</padavine>
+        <veter>11</veter>
+        <opis>Deževno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V10" krajId="K10">
+        <datum>2026-10-20</datum>
+        <temperatura>18</temperatura>
+        <padavine>0</padavine>
+        <veter>6</veter>
+        <opis>Sončno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V11" krajId="K11">
+        <datum>2026-10-20</datum>
+        <temperatura>16</temperatura>
+        <padavine>4</padavine>
+        <veter>13</veter>
+        <opis>Oblačno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V12" krajId="K12">
+        <datum>2026-10-20</datum>
+        <temperatura>17</temperatura>
+        <padavine>1</padavine>
+        <veter>8</veter>
+        <opis>Delno oblačno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V13" krajId="K01">
+        <datum>2026-10-21</datum>
+        <temperatura>14</temperatura>
+        <padavine>7</padavine>
+        <veter>12</veter>
+        <opis>Deževno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V14" krajId="K02">
+        <datum>2026-10-21</datum>
+        <temperatura>16</temperatura>
+        <padavine>0</padavine>
+        <veter>7</veter>
+        <opis>Sončno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+    <napoved id="V15" krajId="K03">
+        <datum>2026-10-21</datum>
+        <temperatura>13</temperatura>
+        <padavine>9</padavine>
+        <veter>14</veter>
+        <opis>Deževno</opis>
+        <opozorilo></opozorilo>
+    </napoved>
+</vremenskeNapovedi>

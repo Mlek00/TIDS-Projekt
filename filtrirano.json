@@ -1,0 +1,212 @@
+[
+  {
+    "id": "I01",
+    "naziv": "Celjski grad",
+    "kraj": "Celje",
+    "datum": "2026-10-20",
+    "temperatura": 17,
+    "padavine": 0,
+    "veter": 8,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I01",
+    "naziv": "Celjski grad",
+    "kraj": "Celje",
+    "datum": "2026-10-21",
+    "temperatura": 14,
+    "padavine": 7,
+    "veter": 12,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I02",
+    "naziv": "Ljubljanski grad",
+    "kraj": "Ljubljana",
+    "datum": "2026-10-20",
+    "temperatura": 15,
+    "padavine": 5,
+    "veter": 12,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I02",
+    "naziv": "Ljubljanski grad",
+    "kraj": "Ljubljana",
+    "datum": "2026-10-21",
+    "temperatura": 16,
+    "padavine": 0,
+    "veter": 7,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I03",
+    "naziv": "Pohorje",
+    "kraj": "Maribor",
+    "datum": "2026-10-20",
+    "temperatura": 16,
+    "padavine": 1,
+    "veter": 10,
+    "oprema": "Pohodni čevlji"
+  },
+  {
+    "id": "I03",
+    "naziv": "Pohorje",
+    "kraj": "Maribor",
+    "datum": "2026-10-21",
+    "temperatura": 13,
+    "padavine": 9,
+    "veter": 14,
+    "oprema": "Pohodni čevlji"
+  },
+  {
+    "id": "I04",
+    "naziv": "Blejsko jezero",
+    "kraj": "Bled",
+    "datum": "2026-10-20",
+    "temperatura": 12,
+    "padavine": 8,
+    "veter": 15,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I05",
+    "naziv": "Bohinjsko jezero",
+    "kraj": "Bohinj",
+    "datum": "2026-10-20",
+    "temperatura": 11,
+    "padavine": 12,
+    "veter": 18,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I06",
+    "naziv": "Sprehod po Kopru",
+    "kraj": "Koper",
+    "datum": "2026-10-20",
+    "temperatura": 21,
+    "padavine": 0,
+    "veter": 7,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I07",
+    "naziv": "Ptujski grad",
+    "kraj": "Ptuj",
+    "datum": "2026-10-20",
+    "temperatura": 17,
+    "padavine": 2,
+    "veter": 9,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I08",
+    "naziv": "Jezero Jasna",
+    "kraj": "Kranjska Gora",
+    "datum": "2026-10-20",
+    "temperatura": 9,
+    "padavine": 3,
+    "veter": 27,
+    "oprema": "Topla oblačila"
+  },
+  {
+    "id": "I09",
+    "naziv": "Postojnska jama",
+    "kraj": "Postojna",
+    "datum": "2026-10-20",
+    "temperatura": 14,
+    "padavine": 10,
+    "veter": 11,
+    "oprema": "Topla oblačila"
+  },
+  {
+    "id": "I10",
+    "naziv": "Solkanski most",
+    "kraj": "Nova Gorica",
+    "datum": "2026-10-20",
+    "temperatura": 18,
+    "padavine": 0,
+    "veter": 6,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I11",
+    "naziv": "Velenjsko jezero",
+    "kraj": "Velenje",
+    "datum": "2026-10-20",
+    "temperatura": 16,
+    "padavine": 4,
+    "veter": 13,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I12",
+    "naziv": "Grad Otočec",
+    "kraj": "Novo mesto",
+    "datum": "2026-10-20",
+    "temperatura": 17,
+    "padavine": 1,
+    "veter": 8,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I13",
+    "naziv": "Šmartinsko jezero",
+    "kraj": "Celje",
+    "datum": "2026-10-20",
+    "temperatura": 17,
+    "padavine": 0,
+    "veter": 8,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I13",
+    "naziv": "Šmartinsko jezero",
+    "kraj": "Celje",
+    "datum": "2026-10-21",
+    "temperatura": 14,
+    "padavine": 7,
+    "veter": 12,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I14",
+    "naziv": "Narodni muzej Slovenije",
+    "kraj": "Ljubljana",
+    "datum": "2026-10-20",
+    "temperatura": 15,
+    "padavine": 5,
+    "veter": 12,
+    "oprema": ""
+  },
+  {
+    "id": "I14",
+    "naziv": "Narodni muzej Slovenije",
+    "kraj": "Ljubljana",
+    "datum": "2026-10-21",
+    "temperatura": 16,
+    "padavine": 0,
+    "veter": 7,
+    "oprema": ""
+  },
+  {
+    "id": "I15",
+    "naziv": "Mariborski mestni park",
+    "kraj": "Maribor",
+    "datum": "2026-10-20",
+    "temperatura": 16,
+    "padavine": 1,
+    "veter": 10,
+    "oprema": "Udobna obutev"
+  },
+  {
+    "id": "I15",
+    "naziv": "Mariborski mestni park",
+    "kraj": "Maribor",
+    "datum": "2026-10-21",
+    "temperatura": 13,
+    "padavine": 9,
+    "veter": 14,
+    "oprema": "Udobna obutev"
+  }
+]
