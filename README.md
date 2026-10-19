@@ -17,3 +17,28 @@ Padavine(Num, mm)
 Hitrost vetra(Num, km/h)
 Vremenska opozorila (String/txt field, Odvisna od ARSO)
 Zanimivosti(Seznam, JSON/XML)
+
+# NALOGA 1
+V okviru prve naloge je izdelana konzolna aplikacija v Javascriptu(Node.js), s katero je omogočeno branje, povezovanje in filtriranje podatkov iz XML datotek in izvozov v XML in JSON.
+-za to nalogo so bili uporabljeni začasni podatki, zapisani v treh XML datotekah kraji.xml(12 entitet), vreme.xml(15 entitet) in izleti.xml(15 entitet). Datoteke oziroma zapisi podaktov so povezane preko atributa krajId, ki se sklicuje na atribut "id" v kraji.xml.
+
+Uporabljene tehnologije: 
+-JavaScript in Node.js
+-Knjižnica fast-xml-parser
+-JSON in XML 
+
+NAMESTITEV IN ZAGON:
+Za zagon programa je potrebno imeti nameščen Node.js (namestitev z "npm install" in zagon z "npm start").
+
+Program uporabnika vpraša po kraju, datumu in največji dovoljeni/željeni količini padavin. Posamezen filter, je možno preskočiti(v smislu, da uporabnik nima specifičnih želj) s pritiskom tipke enter.
+
+PRIMER UPORABE
+Vnesi kraj: Celje
+Vnesi datum: 2026-10-20
+Največ padavin v mm: 5
+
+REZULTAT
+po zgornje vnevnešenih podatkih dobimo dva izleta: Celjski grad in Šmartinsko jezero
+
+IZVOZ REZULTATOV
+program filtrirane podatke izpiše v konzolo in jih shrani v "filtrirano.json" in "filtrirano.xml". Ob ponovnem zagonu programa se izhodni datoteki posodobita glede na vnešene podatke.
