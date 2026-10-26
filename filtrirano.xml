@@ -1,191 +1,20 @@
 <izleti>
-    <izlet id="I01">
+    <izlet id="F001" izletId="I01">
         <naziv>Celjski grad</naziv>
         <kraj>Celje</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>17</temperatura>
+        <datum>2026-10-26</datum>
+        <temperatura>15.3</temperatura>
         <padavine>0</padavine>
-        <veter>8</veter>
+        <veter>5.9</veter>
         <oprema>Udobna obutev</oprema>
     </izlet>
-    <izlet id="I01">
-        <naziv>Celjski grad</naziv>
-        <kraj>Celje</kraj>
-        <datum>2026-10-21</datum>
-        <temperatura>14</temperatura>
-        <padavine>7</padavine>
-        <veter>12</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I02">
-        <naziv>Ljubljanski grad</naziv>
-        <kraj>Ljubljana</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>15</temperatura>
-        <padavine>5</padavine>
-        <veter>12</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I02">
-        <naziv>Ljubljanski grad</naziv>
-        <kraj>Ljubljana</kraj>
-        <datum>2026-10-21</datum>
-        <temperatura>16</temperatura>
-        <padavine>0</padavine>
-        <veter>7</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I03">
-        <naziv>Pohorje</naziv>
-        <kraj>Maribor</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>16</temperatura>
-        <padavine>1</padavine>
-        <veter>10</veter>
-        <oprema>Pohodni čevlji</oprema>
-    </izlet>
-    <izlet id="I03">
-        <naziv>Pohorje</naziv>
-        <kraj>Maribor</kraj>
-        <datum>2026-10-21</datum>
-        <temperatura>13</temperatura>
-        <padavine>9</padavine>
-        <veter>14</veter>
-        <oprema>Pohodni čevlji</oprema>
-    </izlet>
-    <izlet id="I04">
-        <naziv>Blejsko jezero</naziv>
-        <kraj>Bled</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>12</temperatura>
-        <padavine>8</padavine>
-        <veter>15</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I05">
-        <naziv>Bohinjsko jezero</naziv>
-        <kraj>Bohinj</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>11</temperatura>
-        <padavine>12</padavine>
-        <veter>18</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I06">
-        <naziv>Sprehod po Kopru</naziv>
-        <kraj>Koper</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>21</temperatura>
-        <padavine>0</padavine>
-        <veter>7</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I07">
-        <naziv>Ptujski grad</naziv>
-        <kraj>Ptuj</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>17</temperatura>
-        <padavine>2</padavine>
-        <veter>9</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I08">
-        <naziv>Jezero Jasna</naziv>
-        <kraj>Kranjska Gora</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>9</temperatura>
-        <padavine>3</padavine>
-        <veter>27</veter>
-        <oprema>Topla oblačila</oprema>
-    </izlet>
-    <izlet id="I09">
-        <naziv>Postojnska jama</naziv>
-        <kraj>Postojna</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>14</temperatura>
-        <padavine>10</padavine>
-        <veter>11</veter>
-        <oprema>Topla oblačila</oprema>
-    </izlet>
-    <izlet id="I10">
-        <naziv>Solkanski most</naziv>
-        <kraj>Nova Gorica</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>18</temperatura>
-        <padavine>0</padavine>
-        <veter>6</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I11">
-        <naziv>Velenjsko jezero</naziv>
-        <kraj>Velenje</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>16</temperatura>
-        <padavine>4</padavine>
-        <veter>13</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I12">
-        <naziv>Grad Otočec</naziv>
-        <kraj>Novo mesto</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>17</temperatura>
-        <padavine>1</padavine>
-        <veter>8</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I13">
+    <izlet id="F002" izletId="I13">
         <naziv>Šmartinsko jezero</naziv>
         <kraj>Celje</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>17</temperatura>
+        <datum>2026-10-26</datum>
+        <temperatura>15.3</temperatura>
         <padavine>0</padavine>
-        <veter>8</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I13">
-        <naziv>Šmartinsko jezero</naziv>
-        <kraj>Celje</kraj>
-        <datum>2026-10-21</datum>
-        <temperatura>14</temperatura>
-        <padavine>7</padavine>
-        <veter>12</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I14">
-        <naziv>Narodni muzej Slovenije</naziv>
-        <kraj>Ljubljana</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>15</temperatura>
-        <padavine>5</padavine>
-        <veter>12</veter>
-        <oprema></oprema>
-    </izlet>
-    <izlet id="I14">
-        <naziv>Narodni muzej Slovenije</naziv>
-        <kraj>Ljubljana</kraj>
-        <datum>2026-10-21</datum>
-        <temperatura>16</temperatura>
-        <padavine>0</padavine>
-        <veter>7</veter>
-        <oprema></oprema>
-    </izlet>
-    <izlet id="I15">
-        <naziv>Mariborski mestni park</naziv>
-        <kraj>Maribor</kraj>
-        <datum>2026-10-20</datum>
-        <temperatura>16</temperatura>
-        <padavine>1</padavine>
-        <veter>10</veter>
-        <oprema>Udobna obutev</oprema>
-    </izlet>
-    <izlet id="I15">
-        <naziv>Mariborski mestni park</naziv>
-        <kraj>Maribor</kraj>
-        <datum>2026-10-21</datum>
-        <temperatura>13</temperatura>
-        <padavine>9</padavine>
-        <veter>14</veter>
+        <veter>5.9</veter>
         <oprema>Udobna obutev</oprema>
     </izlet>
 </izleti>

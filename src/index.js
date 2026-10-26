@@ -16,8 +16,10 @@ const podatkiKraji = readXML("data/kraji.xml");
 const kraji = podatkiKraji.kraji.kraj;
 //console.log(kraji);
     //vreme
-const podatkiVreme = readXML("data/vreme.xml");
-const vreme = podatkiVreme.vremenskeNapovedi.napoved;
+const podatkiVreme = JSON.parse(
+    fs.readFileSync("data/napovedi-openmeteo.json", "utf8")
+);
+const vreme = podatkiVreme.napovedi;
 //console.log(vreme);
     //izleti
 const podatkiIzleti = readXML("data/izleti.xml");
@@ -30,7 +32,7 @@ const povezaniIzleti = izleti.map(izlet=>{
     );
 
     const napovedi = vreme.filter(
-        v => v["@_krajId"] === izlet["@_krajId"]
+        v => v.krajId === izlet["@_krajId"]
     );
 
     return{
@@ -117,7 +119,7 @@ function izvoziRezultate(rezultati){
 
     const xmlPodatki = {
         izleti: {
-            izlet: rezultati.map(izlet => ({
+            izlet: rezultati.map((izlet, index)=> ({
             "@_id": `F${String(index + 1).padStart(3, "0")}`,
             "@_izletId": izlet.id,
             naziv: izlet.naziv,

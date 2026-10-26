@@ -1,0 +1,594 @@
+{
+  "vir": "Open-Meteo",
+  "pridobljeno": "2026-10-26T21:34:27.310Z",
+  "napovedi": [
+    {
+      "krajId": "K01",
+      "datum": "2026-10-26",
+      "temperatura": 15.3,
+      "padavine": 0,
+      "veter": 5.9
+    },
+    {
+      "krajId": "K01",
+      "datum": "2026-10-27",
+      "temperatura": 13.1,
+      "padavine": 0,
+      "veter": 8
+    },
+    {
+      "krajId": "K01",
+      "datum": "2026-10-28",
+      "temperatura": 12.7,
+      "padavine": 0,
+      "veter": 5
+    },
+    {
+      "krajId": "K01",
+      "datum": "2026-10-29",
+      "temperatura": 15.6,
+      "padavine": 0,
+      "veter": 8.3
+    },
+    {
+      "krajId": "K01",
+      "datum": "2026-10-30",
+      "temperatura": 13.7,
+      "padavine": 0,
+      "veter": 11.9
+    },
+    {
+      "krajId": "K01",
+      "datum": "2026-10-31",
+      "temperatura": 13.7,
+      "padavine": 0,
+      "veter": 7.3
+    },
+    {
+      "krajId": "K01",
+      "datum": "2026-11-01",
+      "temperatura": 12.1,
+      "padavine": 0,
+      "veter": 16.8
+    },
+    {
+      "krajId": "K02",
+      "datum": "2026-10-26",
+      "temperatura": 14.2,
+      "padavine": 0,
+      "veter": 3.8
+    },
+    {
+      "krajId": "K02",
+      "datum": "2026-10-27",
+      "temperatura": 13.6,
+      "padavine": 0,
+      "veter": 6.2
+    },
+    {
+      "krajId": "K02",
+      "datum": "2026-10-28",
+      "temperatura": 13,
+      "padavine": 0.6,
+      "veter": 2.8
+    },
+    {
+      "krajId": "K02",
+      "datum": "2026-10-29",
+      "temperatura": 14.9,
+      "padavine": 0,
+      "veter": 4.8
+    },
+    {
+      "krajId": "K02",
+      "datum": "2026-10-30",
+      "temperatura": 14.1,
+      "padavine": 0,
+      "veter": 10.8
+    },
+    {
+      "krajId": "K02",
+      "datum": "2026-10-31",
+      "temperatura": 13.3,
+      "padavine": 0,
+      "veter": 3.3
+    },
+    {
+      "krajId": "K02",
+      "datum": "2026-11-01",
+      "temperatura": 12.4,
+      "padavine": 0,
+      "veter": 15
+    },
+    {
+      "krajId": "K03",
+      "datum": "2026-10-26",
+      "temperatura": 14.7,
+      "padavine": 0.1,
+      "veter": 9.9
+    },
+    {
+      "krajId": "K03",
+      "datum": "2026-10-27",
+      "temperatura": 12.6,
+      "padavine": 0,
+      "veter": 4.3
+    },
+    {
+      "krajId": "K03",
+      "datum": "2026-10-28",
+      "temperatura": 11.5,
+      "padavine": 0.1,
+      "veter": 4.1
+    },
+    {
+      "krajId": "K03",
+      "datum": "2026-10-29",
+      "temperatura": 14.8,
+      "padavine": 0,
+      "veter": 10.4
+    },
+    {
+      "krajId": "K03",
+      "datum": "2026-10-30",
+      "temperatura": 13,
+      "padavine": 0,
+      "veter": 11.7
+    },
+    {
+      "krajId": "K03",
+      "datum": "2026-10-31",
+      "temperatura": 13,
+      "padavine": 1.6,
+      "veter": 7.2
+    },
+    {
+      "krajId": "K03",
+      "datum": "2026-11-01",
+      "temperatura": 11.2,
+      "padavine": 0.2,
+      "veter": 16.6
+    },
+    {
+      "krajId": "K04",
+      "datum": "2026-10-26",
+      "temperatura": 12,
+      "padavine": 0,
+      "veter": 9.2
+    },
+    {
+      "krajId": "K04",
+      "datum": "2026-10-27",
+      "temperatura": 11.8,
+      "padavine": 0,
+      "veter": 5.9
+    },
+    {
+      "krajId": "K04",
+      "datum": "2026-10-28",
+      "temperatura": 12.5,
+      "padavine": 0.33,
+      "veter": 5
+    },
+    {
+      "krajId": "K04",
+      "datum": "2026-10-29",
+      "temperatura": 14.4,
+      "padavine": 0,
+      "veter": 5.5
+    },
+    {
+      "krajId": "K04",
+      "datum": "2026-10-30",
+      "temperatura": 13.6,
+      "padavine": 0,
+      "veter": 6.6
+    },
+    {
+      "krajId": "K04",
+      "datum": "2026-10-31",
+      "temperatura": 13.1,
+      "padavine": 0,
+      "veter": 6.1
+    },
+    {
+      "krajId": "K04",
+      "datum": "2026-11-01",
+      "temperatura": 9.9,
+      "padavine": 0,
+      "veter": 16.3
+    },
+    {
+      "krajId": "K05",
+      "datum": "2026-10-26",
+      "temperatura": 12.3,
+      "padavine": 0,
+      "veter": 5.2
+    },
+    {
+      "krajId": "K05",
+      "datum": "2026-10-27",
+      "temperatura": 12.2,
+      "padavine": 0,
+      "veter": 5
+    },
+    {
+      "krajId": "K05",
+      "datum": "2026-10-28",
+      "temperatura": 15,
+      "padavine": 0.1,
+      "veter": 6.7
+    },
+    {
+      "krajId": "K05",
+      "datum": "2026-10-29",
+      "temperatura": 14.3,
+      "padavine": 0,
+      "veter": 8.5
+    },
+    {
+      "krajId": "K05",
+      "datum": "2026-10-30",
+      "temperatura": 13.4,
+      "padavine": 0,
+      "veter": 11
+    },
+    {
+      "krajId": "K05",
+      "datum": "2026-10-31",
+      "temperatura": 13.2,
+      "padavine": 0,
+      "veter": 9.7
+    },
+    {
+      "krajId": "K05",
+      "datum": "2026-11-01",
+      "temperatura": 10.4,
+      "padavine": 0,
+      "veter": 18.2
+    },
+    {
+      "krajId": "K06",
+      "datum": "2026-10-26",
+      "temperatura": 18.2,
+      "padavine": 0,
+      "veter": 10.4
+    },
+    {
+      "krajId": "K06",
+      "datum": "2026-10-27",
+      "temperatura": 18.4,
+      "padavine": 0,
+      "veter": 7.9
+    },
+    {
+      "krajId": "K06",
+      "datum": "2026-10-28",
+      "temperatura": 17.8,
+      "padavine": 0,
+      "veter": 10.5
+    },
+    {
+      "krajId": "K06",
+      "datum": "2026-10-29",
+      "temperatura": 18.7,
+      "padavine": 0.4,
+      "veter": 21.8
+    },
+    {
+      "krajId": "K06",
+      "datum": "2026-10-30",
+      "temperatura": 17,
+      "padavine": 0,
+      "veter": 27.3
+    },
+    {
+      "krajId": "K06",
+      "datum": "2026-10-31",
+      "temperatura": 16.6,
+      "padavine": 0,
+      "veter": 24
+    },
+    {
+      "krajId": "K06",
+      "datum": "2026-11-01",
+      "temperatura": 15,
+      "padavine": 0,
+      "veter": 27.1
+    },
+    {
+      "krajId": "K07",
+      "datum": "2026-10-26",
+      "temperatura": 15.1,
+      "padavine": 0.2,
+      "veter": 6.6
+    },
+    {
+      "krajId": "K07",
+      "datum": "2026-10-27",
+      "temperatura": 12.9,
+      "padavine": 0,
+      "veter": 5.1
+    },
+    {
+      "krajId": "K07",
+      "datum": "2026-10-28",
+      "temperatura": 10.6,
+      "padavine": 0.4,
+      "veter": 4
+    },
+    {
+      "krajId": "K07",
+      "datum": "2026-10-29",
+      "temperatura": 14.4,
+      "padavine": 0,
+      "veter": 12
+    },
+    {
+      "krajId": "K07",
+      "datum": "2026-10-30",
+      "temperatura": 13.7,
+      "padavine": 0,
+      "veter": 16
+    },
+    {
+      "krajId": "K07",
+      "datum": "2026-10-31",
+      "temperatura": 13,
+      "padavine": 1.35,
+      "veter": 9
+    },
+    {
+      "krajId": "K07",
+      "datum": "2026-11-01",
+      "temperatura": 11.6,
+      "padavine": 0,
+      "veter": 19.7
+    },
+    {
+      "krajId": "K08",
+      "datum": "2026-10-26",
+      "temperatura": 11,
+      "padavine": 0,
+      "veter": 7.9
+    },
+    {
+      "krajId": "K08",
+      "datum": "2026-10-27",
+      "temperatura": 10.9,
+      "padavine": 0,
+      "veter": 5.9
+    },
+    {
+      "krajId": "K08",
+      "datum": "2026-10-28",
+      "temperatura": 14.3,
+      "padavine": 0.13,
+      "veter": 5.1
+    },
+    {
+      "krajId": "K08",
+      "datum": "2026-10-29",
+      "temperatura": 11.2,
+      "padavine": 0,
+      "veter": 6.9
+    },
+    {
+      "krajId": "K08",
+      "datum": "2026-10-30",
+      "temperatura": 9.3,
+      "padavine": 0,
+      "veter": 7.1
+    },
+    {
+      "krajId": "K08",
+      "datum": "2026-10-31",
+      "temperatura": 9.3,
+      "padavine": 0,
+      "veter": 7.1
+    },
+    {
+      "krajId": "K08",
+      "datum": "2026-11-01",
+      "temperatura": 8.2,
+      "padavine": 0,
+      "veter": 11
+    },
+    {
+      "krajId": "K09",
+      "datum": "2026-10-26",
+      "temperatura": 14.1,
+      "padavine": 0,
+      "veter": 10.3
+    },
+    {
+      "krajId": "K09",
+      "datum": "2026-10-27",
+      "temperatura": 12.3,
+      "padavine": 0,
+      "veter": 14.6
+    },
+    {
+      "krajId": "K09",
+      "datum": "2026-10-28",
+      "temperatura": 12.9,
+      "padavine": 0,
+      "veter": 15.1
+    },
+    {
+      "krajId": "K09",
+      "datum": "2026-10-29",
+      "temperatura": 13.2,
+      "padavine": 0,
+      "veter": 14.8
+    },
+    {
+      "krajId": "K09",
+      "datum": "2026-10-30",
+      "temperatura": 11.4,
+      "padavine": 0,
+      "veter": 20.2
+    },
+    {
+      "krajId": "K09",
+      "datum": "2026-10-31",
+      "temperatura": 11.2,
+      "padavine": 0,
+      "veter": 18
+    },
+    {
+      "krajId": "K09",
+      "datum": "2026-11-01",
+      "temperatura": 9.5,
+      "padavine": 0,
+      "veter": 19.1
+    },
+    {
+      "krajId": "K10",
+      "datum": "2026-10-26",
+      "temperatura": 17,
+      "padavine": 0,
+      "veter": 8.2
+    },
+    {
+      "krajId": "K10",
+      "datum": "2026-10-27",
+      "temperatura": 17.6,
+      "padavine": 0,
+      "veter": 6.9
+    },
+    {
+      "krajId": "K10",
+      "datum": "2026-10-28",
+      "temperatura": 16.6,
+      "padavine": 0,
+      "veter": 6
+    },
+    {
+      "krajId": "K10",
+      "datum": "2026-10-29",
+      "temperatura": 18.2,
+      "padavine": 0,
+      "veter": 6.2
+    },
+    {
+      "krajId": "K10",
+      "datum": "2026-10-30",
+      "temperatura": 17.2,
+      "padavine": 0,
+      "veter": 5.1
+    },
+    {
+      "krajId": "K10",
+      "datum": "2026-10-31",
+      "temperatura": 15.6,
+      "padavine": 0,
+      "veter": 6.1
+    },
+    {
+      "krajId": "K10",
+      "datum": "2026-11-01",
+      "temperatura": 15.1,
+      "padavine": 0,
+      "veter": 14
+    },
+    {
+      "krajId": "K11",
+      "datum": "2026-10-26",
+      "temperatura": 13.7,
+      "padavine": 0,
+      "veter": 7.4
+    },
+    {
+      "krajId": "K11",
+      "datum": "2026-10-27",
+      "temperatura": 12.2,
+      "padavine": 0,
+      "veter": 8.4
+    },
+    {
+      "krajId": "K11",
+      "datum": "2026-10-28",
+      "temperatura": 12.9,
+      "padavine": 0,
+      "veter": 6.3
+    },
+    {
+      "krajId": "K11",
+      "datum": "2026-10-29",
+      "temperatura": 14.9,
+      "padavine": 0,
+      "veter": 6.9
+    },
+    {
+      "krajId": "K11",
+      "datum": "2026-10-30",
+      "temperatura": 14,
+      "padavine": 0,
+      "veter": 4.7
+    },
+    {
+      "krajId": "K11",
+      "datum": "2026-10-31",
+      "temperatura": 13.8,
+      "padavine": 0,
+      "veter": 6.5
+    },
+    {
+      "krajId": "K11",
+      "datum": "2026-11-01",
+      "temperatura": 11,
+      "padavine": 0,
+      "veter": 16.1
+    },
+    {
+      "krajId": "K12",
+      "datum": "2026-10-26",
+      "temperatura": 16.4,
+      "padavine": 0,
+      "veter": 6.1
+    },
+    {
+      "krajId": "K12",
+      "datum": "2026-10-27",
+      "temperatura": 14,
+      "padavine": 0,
+      "veter": 7
+    },
+    {
+      "krajId": "K12",
+      "datum": "2026-10-28",
+      "temperatura": 12.7,
+      "padavine": 0,
+      "veter": 4.3
+    },
+    {
+      "krajId": "K12",
+      "datum": "2026-10-29",
+      "temperatura": 14.9,
+      "padavine": 0,
+      "veter": 9.3
+    },
+    {
+      "krajId": "K12",
+      "datum": "2026-10-30",
+      "temperatura": 13.9,
+      "padavine": 0,
+      "veter": 12.5
+    },
+    {
+      "krajId": "K12",
+      "datum": "2026-10-31",
+      "temperatura": 13.8,
+      "padavine": 0,
+      "veter": 10.7
+    },
+    {
+      "krajId": "K12",
+      "datum": "2026-11-01",
+      "temperatura": 12,
+      "padavine": 0,
+      "veter": 21.1
+    }
+  ]
+}
