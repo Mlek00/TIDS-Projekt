@@ -1,20 +1,20 @@
 <izleti>
-    <izlet id="F001" izletId="I01">
-        <naziv>Celjski grad</naziv>
-        <kraj>Celje</kraj>
-        <datum>2026-10-26</datum>
-        <temperatura>15.3</temperatura>
+    <izlet id="F001" izletId="I03">
+        <naziv>Pohorje</naziv>
+        <kraj>Maribor</kraj>
+        <datum>2026-10-27</datum>
+        <temperatura>12.6</temperatura>
         <padavine>0</padavine>
-        <veter>5.9</veter>
-        <oprema>Udobna obutev</oprema>
+        <veter>4.3</veter>
+        <oprema>Pohodni čevlji</oprema>
     </izlet>
-    <izlet id="F002" izletId="I13">
-        <naziv>Šmartinsko jezero</naziv>
-        <kraj>Celje</kraj>
-        <datum>2026-10-26</datum>
-        <temperatura>15.3</temperatura>
+    <izlet id="F002" izletId="I15">
+        <naziv>Mariborski mestni park</naziv>
+        <kraj>Maribor</kraj>
+        <datum>2026-10-27</datum>
+        <temperatura>12.6</temperatura>
         <padavine>0</padavine>
-        <veter>5.9</veter>
+        <veter>4.3</veter>
         <oprema>Udobna obutev</oprema>
     </izlet>
 </izleti>

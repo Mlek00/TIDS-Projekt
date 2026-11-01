@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="sl">
+<head>
+    <meta charset="utf-8">
+    <title>Izleti in turistična statistika</title>
+</head>
+<body>
+    <h1>Turistična statistika za načrtovanje izletov</h1>
+
+    <label for="kraj">Kraj:</label>
+    <select id="kraj"></select>
+
+    <label for="meritev">Meritev:</label>
+    <select id="meritev">
+        <option value="Prihodi turistov">Prihodi turistov</option>
+        <option value="Prenočitve turistov">Prenočitve turistov</option>
+    </select>
+
+    <p id="status">Pripravljeno za prikaz podatkov.</p>
+    <canvas id="graf"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+    <script>
+    const izborKraja = document.getElementById("kraj");
+    const statusElement = document.getElementById("status");
+    let statistika = [];
+    const izborMeritve = document.getElementById("meritev");
+    let graf;
+
+        function narisiGraf() {
+    const kraj = izborKraja.value;
+    const meritev = izborMeritve.value;
+
+    const izbraniZapisi = statistika.filter(zapis =>
+        zapis.kraj === kraj && zapis.meritev === meritev
+    );
+
+    const leta = [...new Set(izbraniZapisi.map(zapis => zapis.leto))]
+        .sort((a, b) => a - b);
+
+    function vrednostiZa(vrstaTurista) {
+        return leta.map(leto =>
+            izbraniZapisi.find(zapis =>
+                zapis.leto === leto &&
+                zapis.vrstaTurista === vrstaTurista
+            )?.vrednost ?? null
+        );
+    }
+
+        if (graf) {
+            graf.destroy();
+        }
+
+        graf = new Chart(document.getElementById("graf"), {
+            type: "line",
+            data: {
+                labels: leta,
+                datasets: [
+                    {
+                        label: "Domači",
+                        data: vrednostiZa("Domači"),
+                        borderColor: "#2563eb",
+                        spanGaps: false
+                    },
+                    {
+                        label: "Tuji",
+                        data: vrednostiZa("Tuji"),
+                        borderColor: "#ea580c",
+                        spanGaps: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: `${meritev} – ${kraj}`
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: "Število"
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    async function naloziPodatke() {
+        statusElement.textContent = "Nalagam podatke ...";
+
+        try {
+            const odgovor = await fetch("/api/turizem", { cache: "no-store" });
+
+            if (!odgovor.ok) {
+                throw new Error(`HTTP ${odgovor.status}`);
+            }
+
+            const podatki = await odgovor.json();
+            statistika = podatki.statistika;
+
+            const kraji = [...new Set(statistika.map(zapis => zapis.kraj))]
+                .sort((a, b) => a.localeCompare(b, "sl"));
+
+            for (const kraj of kraji) {
+                const moznost = document.createElement("option");
+                moznost.value = kraj;
+                moznost.textContent = kraj;
+                izborKraja.append(moznost);
+            }
+
+            statusElement.textContent =
+                `Naloženih ${statistika.length} zapisov za ${kraji.length} krajev.`;
+            narisiGraf();
+        } catch (napaka) {
+            console.error(napaka);
+            statusElement.textContent = "Podatkov ni bilo mogoče naložiti.";
+        }
+    }
+
+    izborKraja.addEventListener("change", narisiGraf);
+    izborMeritve.addEventListener("change", narisiGraf);
+    naloziPodatke();
+    </script>
+</body>
+</html>

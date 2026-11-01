@@ -5,13 +5,20 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "parse":"node src/parser.js",
+    "parse": "node src/parser.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fast-xml-parser": "^5.11.2"
+    "fast-xml-parser": "^5.11.2",
+    "px": "^0.1.2"
+  },
+  "overrides": {
+  "px": {
+    "underscore": "1.13.8"
+    }
   }
+  
 }

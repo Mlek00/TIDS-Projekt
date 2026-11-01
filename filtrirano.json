@@ -1,22 +1,22 @@
 [
   {
-    "id": "I01",
-    "naziv": "Celjski grad",
-    "kraj": "Celje",
-    "datum": "2026-10-26",
-    "temperatura": 15.3,
+    "id": "I03",
+    "naziv": "Pohorje",
+    "kraj": "Maribor",
+    "datum": "2026-10-27",
+    "temperatura": 12.6,
     "padavine": 0,
-    "veter": 5.9,
-    "oprema": "Udobna obutev"
+    "veter": 4.3,
+    "oprema": "Pohodni čevlji"
   },
   {
-    "id": "I13",
-    "naziv": "Šmartinsko jezero",
-    "kraj": "Celje",
-    "datum": "2026-10-26",
-    "temperatura": 15.3,
+    "id": "I15",
+    "naziv": "Mariborski mestni park",
+    "kraj": "Maribor",
+    "datum": "2026-10-27",
+    "temperatura": 12.6,
     "padavine": 0,
-    "veter": 5.9,
+    "veter": 4.3,
     "oprema": "Udobna obutev"
   }
 ]
