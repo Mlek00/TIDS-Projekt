@@ -42,3 +42,19 @@ po zgornje vnevnešenih podatkih dobimo dva izleta: Celjski grad in Šmartinsko 
 
 IZVOZ REZULTATOV
 program filtrirane podatke izpiše v konzolo in jih shrani v "filtrirano.json" in "filtrirano.xml". Ob ponovnem zagonu programa se izhodni datoteki posodobita glede na vnešene podatke.
+
+# NALOGA 2
+Izdelan je parser v datoteki src/parser.js, ki pridobi dejanske vremenske napovedi iz API-ja Open-Meteo. Koordinate 12-ih krajev prebere iz datoteke data/kraji.xml in za vsak kraj pridobi dnevno najvišjo temperaturo, vsoto padavin ter hitrost vetra.
+Parser odgovor razčleni in poveže napovedi z identifikatorji krajev (krajId) ter jih shrani v data/napovedi/openmeteo.json. Konzolna aplikacija  v src/index.js nato prebere to datoteko, poveže napovedi z izleti ter omogoča filtriranje po kraju, datumu in padavinah.
+
+zagon parserja z: npm run parse
+zagon aplikacije v konzoli z: npm start
+
+Vir: [Open-Meteo Weather Forecast API](https://open-meteo.com/en/docs).
+
+# NALOGA 3
+Projekt uporablja odprte podatke SURS na portalu OPSI:https://podatki.gov.si/dataset/surs2164525s -> "Prihodi in prenočitve domačih in tujih turistov, občine, Slovenija, letno". Izvorni podatki so v formatu PC-Axis (.PX).
+Modul src/turizem.js prenese datoteko .PX, jo dekodira iz kodiranja Windows-1250 in razčleni s knjižnico px, zapise pa poveže s kraji projekta. Manjkajoče vrednosti so obravnavane kot "null" in zato niso prikazane kot nič.
+Spletni strežni v src/server.js ob zahtevu /api/turizem znova pridobi podatke. V public/index.html pa te podatke prikaže s knjižnico Chart.js. Uporabnik lahko izbere kraj in meritev(prihod ali prenočitev turistov), graf pa nato primerja domače in tuje obiskovalce po letih.
+
+Zagon strežnika za prikaz grafov: node src/server.js ; naslov: http://localhost:3000/
