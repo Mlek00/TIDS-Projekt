@@ -18,6 +18,28 @@
 
     <p id="status">Pripravljeno za prikaz podatkov.</p>
     <canvas id="graf"></canvas>
+
+    <h2>Predlog izleta</h2>
+    <p>Za priporočilo uporabi kraj, izbran nad grafom.</p>
+
+    <form id="obrazecPriporocil">
+        <label for="datumIzleta">Datum izleta:</label>
+        <input id="datumIzleta" type="date" required>
+
+        <label for="zeljeIzleta">Kaj si želiš?</label>
+        <textarea
+            id="zeljeIzleta"
+            rows="3"
+            maxlength="300"
+            placeholder="Na primer: lahek izlet z otroki"
+            required
+        ></textarea>
+
+        <button type="submit">Predlagaj izlet</button>
+    </form>
+
+<p id="statusPriporocila"></p>
+<div id="rezultatPriporocila"></div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
     <script>
     const izborKraja = document.getElementById("kraj");
@@ -89,6 +111,74 @@
             }
         });
     }
+
+    
+    const obrazecPriporocil = document.getElementById("obrazecPriporocil");
+    const statusPriporocila = document.getElementById("statusPriporocila");
+    const rezultatPriporocila = document.getElementById("rezultatPriporocila");
+    const gumbPriporocil = obrazecPriporocil.querySelector('button[type="submit"]');
+
+obrazecPriporocil.addEventListener("submit", async (dogodek) => {
+    dogodek.preventDefault();
+
+    const vnos = {
+        kraj: izborKraja.value,
+        datum: document.getElementById("datumIzleta").value,
+        zelje: document.getElementById("zeljeIzleta").value.trim()
+    };
+
+    if (!vnos.kraj || !vnos.datum || !vnos.zelje) {
+        statusPriporocila.textContent = "Izberi kraj, datum in vpiši željo.";
+        return;
+    }
+
+    rezultatPriporocila.replaceChildren();
+    statusPriporocila.textContent = "Pripravljam priporočilo ...";
+    gumbPriporocil.disabled = true;
+
+    try {
+        const odgovor = await fetch("/api/priporocila", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(vnos)
+        });
+
+        const podatki = await odgovor.json();
+
+        if (!odgovor.ok) {
+            throw new Error(podatki.napaka || `HTTP ${odgovor.status}`);
+        }
+
+        const povzetek = document.createElement("p");
+        povzetek.textContent = podatki.priporocilo.povzetek;
+        rezultatPriporocila.append(povzetek);
+
+        const seznam = document.createElement("ul");
+
+        for (const predlog of podatki.priporocilo.predlogi) {
+            const izlet = podatki.kontekst.izleti.find(
+                i => i.id === predlog.izletId
+            );
+
+            const vrstica = document.createElement("li");
+            vrstica.textContent =
+                `${izlet?.naziv ?? predlog.izletId}: ` +
+                `${predlog.razlog} Nasvet: ${predlog.nasvet}`;
+
+            seznam.append(vrstica);
+        }
+
+        rezultatPriporocila.append(seznam);
+        statusPriporocila.textContent = "Priporočilo je pripravljeno.";
+    } catch (napaka) {
+        console.error(napaka);
+        statusPriporocila.textContent = napaka.message;
+    } finally {
+        gumbPriporocil.disabled = false;
+    }
+});
 
     async function naloziPodatke() {
         statusElement.textContent = "Nalagam podatke ...";
