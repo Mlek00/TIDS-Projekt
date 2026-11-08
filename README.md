@@ -45,7 +45,7 @@ program filtrirane podatke izpiše v konzolo in jih shrani v "filtrirano.json" i
 
 # NALOGA 2
 Izdelan je parser v datoteki src/parser.js, ki pridobi dejanske vremenske napovedi iz API-ja Open-Meteo. Koordinate 12-ih krajev prebere iz datoteke data/kraji.xml in za vsak kraj pridobi dnevno najvišjo temperaturo, vsoto padavin ter hitrost vetra.
-Parser odgovor razčleni in poveže napovedi z identifikatorji krajev (krajId) ter jih shrani v data/napovedi/openmeteo.json. Konzolna aplikacija  v src/index.js nato prebere to datoteko, poveže napovedi z izleti ter omogoča filtriranje po kraju, datumu in padavinah.
+Parser odgovor razčleni in poveže napovedi z identifikatorji krajev (krajId) ter jih shrani v data/napovedi-openmeteo.json. Konzolna aplikacija  v src/index.js nato prebere to datoteko, poveže napovedi z izleti ter omogoča filtriranje po kraju, datumu in padavinah.
 
 zagon parserja z: npm run parse
 zagon aplikacije v konzoli z: npm start
@@ -58,3 +58,13 @@ Modul src/turizem.js prenese datoteko .PX, jo dekodira iz kodiranja Windows-1250
 Spletni strežni v src/server.js ob zahtevu /api/turizem znova pridobi podatke. V public/index.html pa te podatke prikaže s knjižnico Chart.js. Uporabnik lahko izbere kraj in meritev(prihod ali prenočitev turistov), graf pa nato primerja domače in tuje obiskovalce po letih.
 
 Zagon strežnika za prikaz grafov: node src/server.js ; naslov: http://localhost:3000/
+# NALOGA 4
+Spletna aplikacija vključuje priporočilo izletov, ustvarjeno z Gemini API. Uporabnik izbere kraj in datum ter vpiše svojo željo o izletu. Strežnik za izbrani kraj prebere izlete iz data/izleti.xml, sproti pridobi vremensko napoved iz Open-Meteo in iz uporabnikovega vnosa ter teh podatkov sestavi dinamičen poziv za model`gemini-3.5-flash-lite. Odgovor modela je v obliki JSON po določeni shemi: vsebuje povzetek in seznam predlogov z ID-jem izleta, razlogom ter nasvetom. Modul src/priporocilo.js JSON pretvori v primerek razreda Priporocilo in preveri, da model predlaga samo izlete iz posredovanega seznama. Spletna stran priporočila prikaže pod obrazcem.
+
+Za lokalni zagon je potreben Gemini API ključ v datoteki ".env" v korenski mapi:
+GEMINI_API_KEY="Gemini_API_Kljuc"
+
+Datoteka ".env" je izključena iz Gita. Po npm install strežnik zaženemo z:
+node --env-file=.env src/server.js
+
+Aplikacija je dostopna na http://localhost:3000. Izbrani datum mora biti v dosegu vremenske napovedi. Projekt uporablja brezplačno raven Gemini API z omejitvami ponudnika.
