@@ -58,6 +58,7 @@ Modul src/turizem.js prenese datoteko .PX, jo dekodira iz kodiranja Windows-1250
 Spletni strežni v src/server.js ob zahtevu /api/turizem znova pridobi podatke. V public/index.html pa te podatke prikaže s knjižnico Chart.js. Uporabnik lahko izbere kraj in meritev(prihod ali prenočitev turistov), graf pa nato primerja domače in tuje obiskovalce po letih.
 
 Zagon strežnika za prikaz grafov: node src/server.js ; naslov: http://localhost:3000/
+
 # NALOGA 4
 Spletna aplikacija vključuje priporočilo izletov, ustvarjeno z Gemini API. Uporabnik izbere kraj in datum ter vpiše svojo željo o izletu. Strežnik za izbrani kraj prebere izlete iz data/izleti.xml, sproti pridobi vremensko napoved iz Open-Meteo in iz uporabnikovega vnosa ter teh podatkov sestavi dinamičen poziv za model`gemini-3.5-flash-lite. Odgovor modela je v obliki JSON po določeni shemi: vsebuje povzetek in seznam predlogov z ID-jem izleta, razlogom ter nasvetom. Modul src/priporocilo.js JSON pretvori v primerek razreda Priporocilo in preveri, da model predlaga samo izlete iz posredovanega seznama. Spletna stran priporočila prikaže pod obrazcem.
 
@@ -67,4 +68,22 @@ GEMINI_API_KEY="Gemini_API_Kljuc"
 Datoteka ".env" je izključena iz Gita. Po npm install strežnik zaženemo z:
 node --env-file=.env src/server.js
 
-Aplikacija je dostopna na http://localhost:3000. Izbrani datum mora biti v dosegu vremenske napovedi. Projekt uporablja brezplačno raven Gemini API z omejitvami ponudnika.
+Izbrani datum mora biti v dosegu vremenske napovedi. Projekt uporablja brezplačno raven Gemini API.
+
+# NALOGA 5 – gRPC
+
+Projekt uporablja eno storitev IzletService, definirano v proto/izleti.proto. Storitev ima štiri RPC metode:
+
+- SeznamKrajev vrne kraje iz data/kraji.xml.
+- IzletiZaKraj vrne izlete za izbrani kraj iz data/izleti.xml.
+- NapovedZaDan pridobi napoved Open-Meteo za izbrani kraj in datum.
+- PretakajNapovedi je strežniško pretočni klic, ki pošlje posamezne dnevne napovedi.
+
+Strežnik v src/grpc-streznik.js izvaja metode, spletni strežnik v src/server.js pa jih kliče kot gRPC odjemalec. Brskalnik prejema odgovore prek spletnega strežnika. Pretočne napovedi ta posreduje brskalniku kot Server-Sent Events. Ob izbiri kraja se osvežijo izleti in napovedi; ob izbiri datuma se prikaže napoved za ta dan.
+
+Po npm install zaženemo aplikacijo v dveh terminalih:
+
+1. gRPC strežnik: node src/grpc-streznik.js
+2. Spletni strežnik: node --env-file=.env src/server.js
+
+gRPC klice je mogoče preveriti tudi z node src/grpc-odjemalec.js K01 in node src/grpc-vreme-test.js K01 2026-11-14. Datum za vremenski preizkus mora biti v dosegu trenutne napovedi.
