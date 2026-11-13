@@ -3,7 +3,12 @@ const path = require("node:path");
 const http = require("node:http");
 const { pridobiStatistiko } = require("./turizem");
 const { ustvariPriporocilo } = require("./llm");
+const grpc = require("@grpc/grpc-js");
+const { ustvariOdjemalca } = require("./grpc-odjemalec");
 
+
+
+const grpcOdjemalec = ustvariOdjemalca();
 const server = http.createServer(async (zahtevek, odgovor) => {
     const pot = new URL(zahtevek.url, "http://localhost").pathname;
 
@@ -63,6 +68,167 @@ const server = http.createServer(async (zahtevek, odgovor) => {
                 : "Priporočila ni bilo mogoče pripraviti."
         }));
     }
+
+        return;
+    }
+        if (pot === "/api/grpc/izleti" && zahtevek.method === "GET") {
+        const url = new URL(zahtevek.url, "http://localhost");
+        const krajId = url.searchParams.get("krajId");
+
+        if (!krajId) {
+            odgovor.writeHead(400, {
+                "Content-Type": "application/json; charset=utf-8"
+            });
+            odgovor.end(JSON.stringify({ napaka: "Manjka krajId." }));
+            return;
+        }
+
+        grpcOdjemalec.IzletiZaKraj(
+            { kraj_id: krajId },
+            (napaka, podatki) => {
+                if (napaka) {
+                    const status = napaka.code === grpc.status.NOT_FOUND
+                        ? 404
+                        : 502;
+
+                    odgovor.writeHead(status, {
+                        "Content-Type": "application/json; charset=utf-8"
+                    });
+                    odgovor.end(JSON.stringify({
+                        napaka: napaka.details
+                    }));
+                    return;
+                }
+
+                odgovor.writeHead(200, {
+                    "Content-Type": "application/json; charset=utf-8",
+                    "Cache-Control": "no-store"
+                });
+                odgovor.end(JSON.stringify(podatki));
+            }
+        );
+
+        return;
+    }
+        if (pot === "/api/grpc/napovedi" && zahtevek.method === "GET") {
+        const url = new URL(zahtevek.url, "http://localhost");
+        const krajId = url.searchParams.get("krajId");
+
+        if (!krajId) {
+            odgovor.writeHead(400, {
+                "Content-Type": "application/json; charset=utf-8"
+            });
+            odgovor.end(JSON.stringify({ napaka: "Manjka krajId." }));
+            return;
+        }
+
+        odgovor.writeHead(200, {
+            "Content-Type": "text/event-stream; charset=utf-8",
+            "Cache-Control": "no-cache, no-transform",
+            "Connection": "keep-alive"
+        });
+        odgovor.flushHeaders();
+
+        const tok = grpcOdjemalec.PretakajNapovedi({
+            kraj_id: krajId
+        });
+        let zakljuceno = false;
+
+        odgovor.on("close", () => {
+            if (!zakljuceno) tok.cancel();
+        });
+
+        tok.on("data", napoved => {
+            if (!odgovor.destroyed) {
+                odgovor.write(`data: ${JSON.stringify(napoved)}\n\n`);
+            }
+        });
+
+        tok.on("end", () => {
+            zakljuceno = true;
+
+            if (!odgovor.destroyed) {
+                odgovor.write("event: konec\ndata: {}\n\n");
+                odgovor.end();
+            }
+        });
+
+        tok.on("error", napaka => {
+            zakljuceno = true;
+
+            if (!odgovor.destroyed) {
+                odgovor.write(
+                    `event: napaka\ndata: ${JSON.stringify({
+                        napaka: napaka.details || "Napovedi ni bilo mogoče pridobiti."
+                    })}\n\n`
+                );
+                odgovor.end();
+            }
+        });
+
+        return;
+    }
+        if (pot === "/api/grpc/kraji" && zahtevek.method === "GET") {
+        grpcOdjemalec.SeznamKrajev({}, (napaka, podatki) => {
+            if (napaka) {
+                odgovor.writeHead(502, {
+                    "Content-Type": "application/json; charset=utf-8"
+                });
+                odgovor.end(JSON.stringify({
+                    napaka: "Krajev ni bilo mogoče pridobiti."
+                }));
+                return;
+            }
+
+            odgovor.writeHead(200, {
+                "Content-Type": "application/json; charset=utf-8",
+                "Cache-Control": "no-store"
+            });
+            odgovor.end(JSON.stringify(podatki));
+        });
+
+        return;
+    }
+
+    if (pot === "/api/grpc/napoved" && zahtevek.method === "GET") {
+        const url = new URL(zahtevek.url, "http://localhost");
+        const krajId = url.searchParams.get("krajId");
+        const datum = url.searchParams.get("datum");
+
+        if (!krajId || !datum) {
+            odgovor.writeHead(400, {
+                "Content-Type": "application/json; charset=utf-8"
+            });
+            odgovor.end(JSON.stringify({
+                napaka: "Manjkata krajId ali datum."
+            }));
+            return;
+        }
+
+        grpcOdjemalec.NapovedZaDan(
+            { kraj_id: krajId, datum },
+            (napaka, podatki) => {
+                if (napaka) {
+                    const status =
+                        napaka.code === grpc.status.INVALID_ARGUMENT ? 400 :
+                        napaka.code === grpc.status.NOT_FOUND ? 404 : 502;
+
+                    odgovor.writeHead(status, {
+                        "Content-Type": "application/json; charset=utf-8"
+                    });
+                    odgovor.end(JSON.stringify({
+                        napaka: napaka.details
+                    }));
+                    return;
+                }
+
+                odgovor.writeHead(200, {
+                    "Content-Type": "application/json; charset=utf-8",
+                    "Cache-Control": "no-store"
+                });
+                odgovor.end(JSON.stringify(podatki));
+            }
+        );
 
         return;
     }

@@ -19,6 +19,14 @@
     <p id="status">Pripravljeno za prikaz podatkov.</p>
     <canvas id="graf"></canvas>
 
+    <h2>Izleti v izbranem kraju</h2>
+    <p id="statusIzletov"></p>
+    <ul id="seznamIzletov"></ul>
+
+    <h2>Vremenska napoved</h2>
+    <p id="statusNapovedi"></p>
+    <ul id="seznamNapovedi"></ul>
+
     <h2>Predlog izleta</h2>
     <p>Za priporočilo uporabi kraj, izbran nad grafom.</p>
 
@@ -38,6 +46,9 @@
         <button type="submit">Predlagaj izlet</button>
     </form>
 
+    <p id="statusDnevneNapovedi">Izberi datum za prikaz dnevne napovedi.</p>
+    <p id="dnevnaNapoved"></p>
+
 <p id="statusPriporocila"></p>
 <div id="rezultatPriporocila"></div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
@@ -48,7 +59,7 @@
     const izborMeritve = document.getElementById("meritev");
     let graf;
 
-        function narisiGraf() {
+    function narisiGraf() {
     const kraj = izborKraja.value;
     const meritev = izborMeritve.value;
 
@@ -118,7 +129,7 @@
     const rezultatPriporocila = document.getElementById("rezultatPriporocila");
     const gumbPriporocil = obrazecPriporocil.querySelector('button[type="submit"]');
 
-obrazecPriporocil.addEventListener("submit", async (dogodek) => {
+    obrazecPriporocil.addEventListener("submit", async (dogodek) => {
     dogodek.preventDefault();
 
     const vnos = {
@@ -180,41 +191,239 @@ obrazecPriporocil.addEventListener("submit", async (dogodek) => {
     }
 });
 
-    async function naloziPodatke() {
-        statusElement.textContent = "Nalagam podatke ...";
+    const statusIzletov = document.getElementById("statusIzletov");
+    const seznamIzletov = document.getElementById("seznamIzletov");
+    let zadnjaIzbiraIzletov = 0;
 
-        try {
-            const odgovor = await fetch("/api/turizem", { cache: "no-store" });
+    async function naloziIzlete() {
+    const stevilkaIzbire = ++zadnjaIzbiraIzletov;
+    const krajId = statistika.find(
+        zapis => zapis.kraj === izborKraja.value
+    )?.krajId;
 
-            if (!odgovor.ok) {
-                throw new Error(`HTTP ${odgovor.status}`);
-            }
+    seznamIzletov.replaceChildren();
 
-            const podatki = await odgovor.json();
-            statistika = podatki.statistika;
-
-            const kraji = [...new Set(statistika.map(zapis => zapis.kraj))]
-                .sort((a, b) => a.localeCompare(b, "sl"));
-
-            for (const kraj of kraji) {
-                const moznost = document.createElement("option");
-                moznost.value = kraj;
-                moznost.textContent = kraj;
-                izborKraja.append(moznost);
-            }
-
-            statusElement.textContent =
-                `Naloženih ${statistika.length} zapisov za ${kraji.length} krajev.`;
-            narisiGraf();
-        } catch (napaka) {
-            console.error(napaka);
-            statusElement.textContent = "Podatkov ni bilo mogoče naložiti.";
-        }
+    if (!krajId) {
+        statusIzletov.textContent = "Za ta kraj ni podatkov.";
+        return;
     }
 
-    izborKraja.addEventListener("change", narisiGraf);
+    statusIzletov.textContent = "Nalagam izlete ...";
+
+    try {
+        const odgovor = await fetch(
+            `/api/grpc/izleti?krajId=${encodeURIComponent(krajId)}`,
+            { cache: "no-store" }
+        );
+        const podatki = await odgovor.json();
+
+        if (stevilkaIzbire !== zadnjaIzbiraIzletov) return;
+        if (!odgovor.ok) {
+            throw new Error(podatki.napaka || `HTTP ${odgovor.status}`);
+        }
+
+        for (const izlet of podatki.izleti) {
+            const vrstica = document.createElement("li");
+            vrstica.textContent =
+                `${izlet.naziv} – ${izlet.vrsta}, ` +
+                `${izlet.trajanje_ur} h, oprema: ${izlet.oprema}`;
+            seznamIzletov.append(vrstica);
+        }
+
+        statusIzletov.textContent =
+            `Najdenih izletov: ${podatki.izleti.length}`;
+    } catch (napaka) {
+        if (stevilkaIzbire !== zadnjaIzbiraIzletov) return;
+        console.error(napaka);
+        statusIzletov.textContent = "Izletov ni bilo mogoče naložiti.";
+    }
+}
+    const statusNapovedi = document.getElementById("statusNapovedi");
+    const seznamNapovedi = document.getElementById("seznamNapovedi");
+    let trenutniTokNapovedi = null;
+
+function naloziNapovedi() {
+    if (trenutniTokNapovedi) {
+        trenutniTokNapovedi.close();
+    }
+
+    const krajId = statistika.find(
+        zapis => zapis.kraj === izborKraja.value
+    )?.krajId;
+
+    seznamNapovedi.replaceChildren();
+
+    if (!krajId) {
+        statusNapovedi.textContent = "Izberi kraj.";
+        trenutniTokNapovedi = null;
+        return;
+    }
+
+    statusNapovedi.textContent = "Nalagam napovedi ...";
+
+    const tok = new EventSource(
+        `/api/grpc/napovedi?krajId=${encodeURIComponent(krajId)}`
+    );
+    trenutniTokNapovedi = tok;
+    let prejetih = 0;
+
+    tok.onmessage = dogodek => {
+        if (trenutniTokNapovedi !== tok) return;
+
+        const napoved = JSON.parse(dogodek.data);
+        const vrstica = document.createElement("li");
+
+        vrstica.textContent =
+            `${napoved.datum}: ${napoved.temperatura_max} °C, ` +
+            `${napoved.padavine_mm} mm padavin, ` +
+            `${napoved.veter_kmh} km/h veter`;
+
+        seznamNapovedi.append(vrstica);
+        prejetih++;
+        statusNapovedi.textContent = `Prejetih napovedi: ${prejetih}`;
+    };
+
+    tok.addEventListener("konec", () => {
+        if (trenutniTokNapovedi !== tok) return;
+
+        statusNapovedi.textContent =
+            `Naloženih napovedi: ${prejetih}`;
+        tok.close();
+        trenutniTokNapovedi = null;
+    });
+
+    tok.addEventListener("napaka", dogodek => {
+        if (trenutniTokNapovedi !== tok) return;
+
+        const podatki = JSON.parse(dogodek.data);
+        statusNapovedi.textContent = podatki.napaka;
+        tok.close();
+        trenutniTokNapovedi = null;
+    });
+
+    tok.onerror = () => {
+        if (trenutniTokNapovedi !== tok) return;
+
+        statusNapovedi.textContent =
+            "Povezava za vremenske napovedi ni uspela.";
+        tok.close();
+        trenutniTokNapovedi = null;
+    };
+}
+
+    const vnosDatuma = document.getElementById("datumIzleta");
+    const statusDnevneNapovedi =
+        document.getElementById("statusDnevneNapovedi");
+    const dnevnaNapoved = document.getElementById("dnevnaNapoved");
+    let zadnjiZahtevekDneva = 0;
+
+    async function naloziDnevnoNapoved() {
+    const stevilkaZahtevka = ++zadnjiZahtevekDneva;
+    const datum = vnosDatuma.value;
+    const krajId = statistika.find(
+        zapis => zapis.kraj === izborKraja.value
+    )?.krajId;
+
+    dnevnaNapoved.textContent = "";
+
+    if (!datum) {
+        statusDnevneNapovedi.textContent =
+            "Izberi datum za prikaz dnevne napovedi.";
+        return;
+    }
+
+    if (!krajId) {
+        statusDnevneNapovedi.textContent = "Najprej izberi kraj.";
+        return;
+    }
+
+    statusDnevneNapovedi.textContent = "Nalagam dnevno napoved ...";
+
+    try {
+        const parametri = new URLSearchParams({ krajId, datum });
+        const odgovor = await fetch(
+            `/api/grpc/napoved?${parametri}`,
+            { cache: "no-store" }
+        );
+        const napoved = await odgovor.json();
+
+        if (stevilkaZahtevka !== zadnjiZahtevekDneva) return;
+        if (!odgovor.ok) {
+            throw new Error(napoved.napaka || `HTTP ${odgovor.status}`);
+        }
+
+        dnevnaNapoved.textContent =
+            `${napoved.datum}: ${napoved.temperatura_max} °C, ` +
+            `${napoved.padavine_mm} mm padavin, ` +
+            `${napoved.veter_kmh} km/h veter`;
+
+        statusDnevneNapovedi.textContent =
+            `Napoved za ${izborKraja.value}:`;
+    } catch (napaka) {
+        if (stevilkaZahtevka !== zadnjiZahtevekDneva) return;
+        console.error(napaka);
+        statusDnevneNapovedi.textContent = napaka.message;
+    }
+}
+
+    async function naloziPodatke() {
+    statusElement.textContent = "Nalagam podatke ...";
+
+    try {
+        const [odgovorTurizem, odgovorKraji] = await Promise.all([
+            fetch("/api/turizem", { cache: "no-store" }),
+            fetch("/api/grpc/kraji", { cache: "no-store" })
+        ]);
+
+        if (!odgovorTurizem.ok || !odgovorKraji.ok) {
+            throw new Error("Podatkov ni bilo mogoče pridobiti.");
+        }
+
+        const [podatkiTurizem, podatkiKraji] = await Promise.all([
+            odgovorTurizem.json(),
+            odgovorKraji.json()
+        ]);
+
+        statistika = podatkiTurizem.statistika;
+
+        const kraji = podatkiKraji.kraji.sort(
+            (a, b) => a.ime.localeCompare(b.ime, "sl")
+        );
+
+        izborKraja.replaceChildren();
+
+        for (const kraj of kraji) {
+            const moznost = document.createElement("option");
+            moznost.value = kraj.ime;
+            moznost.textContent = kraj.ime;
+            izborKraja.append(moznost);
+        }
+
+        statusElement.textContent =
+            `Naloženih ${statistika.length} statističnih zapisov ` +
+            `in ${kraji.length} krajev.`;
+
+        narisiGraf();
+        naloziIzlete();
+        naloziNapovedi();
+        naloziDnevnoNapoved();
+    } catch (napaka) {
+        console.error(napaka);
+        statusElement.textContent = "Podatkov ni bilo mogoče naložiti.";
+    }
+}
+
+    izborKraja.addEventListener("change", () => {
+    narisiGraf();
+    naloziIzlete();
+    naloziNapovedi();
+    naloziDnevnoNapoved();
+});
     izborMeritve.addEventListener("change", narisiGraf);
+    vnosDatuma.addEventListener("change", naloziDnevnoNapoved);
+
     naloziPodatke();
+    
     </script>
 </body>
 </html>

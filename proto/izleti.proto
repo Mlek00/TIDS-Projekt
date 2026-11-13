@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package izleti;
+
+service IzletService {
+  rpc SeznamKrajev (PrazenZahtevek) returns (SeznamKrajevOdgovor);
+  rpc IzletiZaKraj (KrajZahtevek) returns (IzletiOdgovor);
+  rpc NapovedZaDan (NapovedZahtevek) returns (Napoved);
+  rpc PretakajNapovedi (KrajZahtevek) returns (stream Napoved);
+}
+
+message PrazenZahtevek {}
+
+message KrajZahtevek {
+  string kraj_id = 1;
+}
+
+message NapovedZahtevek {
+  string kraj_id = 1;
+  string datum = 2;
+}
+
+message Kraj {
+  string id = 1;
+  string ime = 2;
+  string regija = 3;
+  double latitude = 4;
+  double longitude = 5;
+}
+
+message Izlet {
+  string id = 1;
+  string kraj_id = 2;
+  string naziv = 3;
+  string vrsta = 4;
+  string zahtevnost = 5;
+  int32 trajanje_ur = 6;
+  string oprema = 7;
+}
+
+message Napoved {
+  string kraj_id = 1;
+  string datum = 2;
+  double temperatura_max = 3;
+  double padavine_mm = 4;
+  double veter_kmh = 5;
+}
+
+message SeznamKrajevOdgovor {
+  repeated Kraj kraji = 1;
+}
+
+message IzletiOdgovor {
+  repeated Izlet izleti = 1;
+}
