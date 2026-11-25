@@ -4,6 +4,7 @@ const http = require("node:http");
 const { pridobiStatistiko } = require("./turizem");
 const { ustvariPriporocilo } = require("./llm");
 const grpc = require("@grpc/grpc-js");
+const { oceniIzletePrekCevi } = require("./cev-odjemalec");
 const { ustvariOdjemalca } = require("./grpc-odjemalec");
 
 
@@ -229,6 +230,62 @@ const server = http.createServer(async (zahtevek, odgovor) => {
                 odgovor.end(JSON.stringify(podatki));
             }
         );
+
+        return;
+    }
+    if (pot === "/api/ocena-izletov" && zahtevek.method === "GET") {
+        const url = new URL(zahtevek.url, "http://localhost");
+        const kraj = url.searchParams.get("kraj")?.trim();
+        const datum = url.searchParams.get("datum");
+        const najvecUrVnos = url.searchParams.get("najvecUr");
+        const najvecUr = Number(najvecUrVnos);
+
+        if (
+            !kraj ||
+            !/^\d{4}-\d{2}-\d{2}$/.test(datum ?? "") ||
+            najvecUrVnos === null ||
+            !Number.isInteger(najvecUr) ||
+            najvecUr < 1 ||
+            najvecUr > 12
+        ) {
+            odgovor.writeHead(400, {
+                "Content-Type": "application/json; charset=utf-8"
+            });
+            odgovor.end(JSON.stringify({
+                napaka: "Izberi kraj, datum in največje trajanje od 1 do 12 ur."
+            }));
+            return;
+        }
+
+        try {
+            const rezultat = await oceniIzletePrekCevi(
+                kraj,
+                datum,
+                najvecUr
+            );
+
+            if (odgovor.destroyed) return;
+
+            odgovor.writeHead(200, {
+                "Content-Type": "application/json; charset=utf-8",
+                "Cache-Control": "no-store"
+            });
+            odgovor.end(JSON.stringify(rezultat));
+        } catch (napaka) {
+            if (odgovor.destroyed) return;
+
+            const status =
+                napaka.code === "CEV_NEDOSEGLJIVA" ? 503 :
+                napaka.code === "ETIMEDOUT" ? 504 : 502;
+
+            odgovor.writeHead(status, {
+                "Content-Type": "application/json; charset=utf-8",
+                "Cache-Control": "no-store"
+            });
+            odgovor.end(JSON.stringify({
+                napaka: napaka.message
+            }));
+        }
 
         return;
     }

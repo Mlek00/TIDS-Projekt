@@ -51,6 +51,15 @@
 
 <p id="statusPriporocila"></p>
 <div id="rezultatPriporocila"></div>
+<h2>Ocena izletov glede na vreme</h2>
+<p>Uporabi kraj in datum, izbrana zgoraj.</p>
+
+<label for="najvecUr">Največje trajanje (ur):</label>
+<input id="najvecUr" type="number" min="1" max="12" value="3">
+<button id="gumbOceni" type="button">Oceni izlete</button>
+
+<p id="statusOcene"></p>
+<ul id="rezultatOcene"></ul>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
     <script>
     const izborKraja = document.getElementById("kraj");
@@ -311,7 +320,95 @@ function naloziNapovedi() {
     };
 }
 
-    const vnosDatuma = document.getElementById("datumIzleta");
+const vnosDatuma = document.getElementById("datumIzleta");
+const vnosNajvecUr = document.getElementById("najvecUr");
+const gumbOceni = document.getElementById("gumbOceni");
+const statusOcene = document.getElementById("statusOcene");
+const rezultatOcene = document.getElementById("rezultatOcene");
+let zadnjiZahtevekOcene = 0;
+
+function pocistiOceno() {
+    zadnjiZahtevekOcene++;
+    gumbOceni.disabled = false;
+    rezultatOcene.replaceChildren();
+    statusOcene.textContent =
+        "Klikni »Oceni izlete« za trenutno izbiro.";
+}
+
+izborKraja.addEventListener("change", pocistiOceno);
+vnosDatuma.addEventListener("change", pocistiOceno);
+vnosNajvecUr.addEventListener("input", pocistiOceno);
+
+gumbOceni.addEventListener("click", async () => {
+    const kraj = izborKraja.value;
+    const datum = vnosDatuma.value;
+    const najvecUr = Number(vnosNajvecUr.value);
+
+    if (
+        !kraj ||
+        !datum ||
+        !Number.isInteger(najvecUr) ||
+        najvecUr < 1 ||
+        najvecUr > 12
+    ) {
+        statusOcene.textContent =
+            "Izberi kraj, datum in trajanje od 1 do 12 ur.";
+        return;
+    }
+
+    const stevilkaZahtevka = ++zadnjiZahtevekOcene;
+    gumbOceni.disabled = true;
+    rezultatOcene.replaceChildren();
+    statusOcene.textContent = "Ocenjujem izlete ...";
+
+    try {
+        const parametri = new URLSearchParams({
+            kraj,
+            datum,
+            najvecUr: String(najvecUr)
+        });
+
+        const odgovor = await fetch(
+            `/api/ocena-izletov?${parametri}`,
+            { cache: "no-store" }
+        );
+        const podatki = await odgovor.json();
+
+        if (stevilkaZahtevka !== zadnjiZahtevekOcene) return;
+        if (!odgovor.ok) {
+            throw new Error(podatki.napaka || `HTTP ${odgovor.status}`);
+        }
+
+        statusOcene.textContent =
+            `${podatki.kraj}, ${podatki.datum}: ` +
+            `${podatki.vreme.temperatura} °C, ` +
+            `${podatki.vreme.padavine} mm padavin, ` +
+            `${podatki.vreme.veter} km/h vetra.`;
+
+        if (podatki.izleti.length === 0) {
+            const vrstica = document.createElement("li");
+            vrstica.textContent =
+                "Ni izletov, ki ustrezajo izbranemu trajanju.";
+            rezultatOcene.append(vrstica);
+        }
+
+        for (const izlet of podatki.izleti) {
+            const vrstica = document.createElement("li");
+            vrstica.textContent =
+                `${izlet.naziv} (${izlet.trajanjeUr} h): ` +
+                `${izlet.ocena}/100. ${izlet.razlogi.join(" ")}`;
+            rezultatOcene.append(vrstica);
+        }
+    } catch (napaka) {
+        if (stevilkaZahtevka !== zadnjiZahtevekOcene) return;
+        console.error(napaka);
+        statusOcene.textContent = napaka.message;
+    } finally {
+        if (stevilkaZahtevka === zadnjiZahtevekOcene) {
+            gumbOceni.disabled = false;
+        }
+    }
+});
     const statusDnevneNapovedi =
         document.getElementById("statusDnevneNapovedi");
     const dnevnaNapoved = document.getElementById("dnevnaNapoved");
